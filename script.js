@@ -1,5 +1,4 @@
-
-//global variables
+//Declare global variables
 let playerScore = 0;
 let computerScore = 0;
 let drawScore = 0;
@@ -11,13 +10,11 @@ const choices = [
     "paper",
     "scissors"
 ];
-
 // Randomly generate a computer selection of rock, paper or scissors.
 function getComputerSelection(){
     let computerChoice = choices[Math.floor(Math.random()*choices.length)]; //Use Math.floor and Math.random to randomly select a value from the choices array
     return computerChoice;
 }
-
 // Let user select choice of rock, paper or scissors. 
 function getPlayerSelection(){
     let playerChoice = prompt("Please enter 'scissors', 'paper' or 'rock'.");
@@ -31,7 +28,6 @@ function getPlayerSelection(){
         return playerChoice;
     }
 }
-
 //Compare player selection with computer selection to determine win, loss or draw. 
 function getWinner(playerSelection, computerSelection) {
     //Check for draw
@@ -60,11 +56,16 @@ function displayScore(){
     console.log(`Player: ${playerScore}`);
     console.log(`Computer: ${computerScore}`);
     console.log(`Draws: ${drawScore}`);
+    console.log(`--- Rounds played: ${roundsPlayed} ---`);
 }
 //Display the player selection against the computer selection.
 function displaySelection(playerSelection, computerSelection){
     console.log(`Player: ${playerSelection}`);
     console.log(`Computer: ${computerSelection}`);
+}
+//Function to track total rounds played
+function gameRounds(){
+    roundsPlayed++;
 }
 
 //Function to play round. Calls on the functions to allow player/computer to select, compare the results and display/update the score after each round played .
@@ -73,9 +74,22 @@ function playRound(){
     computerSelection = getComputerSelection();
     getWinner(playerSelection, computerSelection);
     displaySelection(playerSelection, computerSelection);
+    gameRounds();
+    displayScore();
+}
+// Loop to play until one side (player vs computer) reaches 5 wins, and display final results 
+function game(){
+    while (playerScore < 5 || computerScore < 5) {
+        playRound();
+        if (playerScore === 5 || computerScore === 5) 
+        break;
+    } console.log('--- Game Over! Final Score Below ---');
+    if(playerScore > computerScore){
+        console.log("You win!");
+    } else if (computerScore > playerScore) {;
+        console.log("You lose!");
+    }
     displayScore();
 }
 
-// Loop to play until one side (player vs computer) reaches 3 wins
-
-// End loop and print result of 'best of 5' game
+game();
