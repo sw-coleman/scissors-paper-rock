@@ -3,8 +3,6 @@ let playerScore = 0;
 let computerScore = 0;
 let drawScore = 0;
 let roundsPlayed = 0;
-let computerSelection = '';
-let playerSelection = '';
 const choices = [
     "rock",
     "paper",
@@ -15,19 +13,45 @@ function getComputerSelection(){
     let computerChoice = choices[Math.floor(Math.random()*choices.length)]; //Use Math.floor and Math.random to randomly select a value from the choices array
     return computerChoice;
 }
-// Let user select choice of rock, paper or scissors. 
-function getPlayerSelection(){
-    let playerChoice = prompt("Please enter 'scissors', 'paper' or 'rock'.");
-    playerChoice = playerChoice.toLowerCase(); //Make input case-insensitive
 
-    if (choices.indexOf(playerChoice) !== -1){ //Validate user input against possible chocies
-        return playerChoice;
-       } else {
-        playerChoice = prompt("Please try again. Enter only 'scissors', 'paper' or 'rock'."); //Error if player does not enter valid selection
-        playerChoice = playerChoice.toLowerCase(); //Make input case-insensitive
-        return playerChoice;
-    }
+//Assign selections for event listener. Need to find way to condense all three options into one function, if possible.
+function assignScissors() {
+    playerSelection = 'scissors';
+    return playerSelection;
 }
+function assignPaper() {
+    playerSelection = 'paper';
+    return playerSelection;
+}
+function assignRock() {
+    playerSelection = 'rock';
+    return playerSelection;
+}
+
+//Event listeners for buttons, to assign player selection upon click of button.
+const scissorsBtn = document.querySelector(".scissors");
+scissorsBtn.addEventListener("click", assignScissors);
+
+const paperBtn = document.querySelector(".paper");
+paperBtn.addEventListener("click", assignPaper);
+
+const rockBtn = document.querySelector(".rock")
+rockBtn.addEventListener("click", assignRock);
+
+// Let user select choice of rock, paper or scissors. 
+//function getPlayerSelection(){
+//    let playerChoice = prompt("Please enter 'scissors', 'paper' or 'rock'.");
+//    playerChoice = playerChoice.toLowerCase(); //Make input case-insensitive
+//
+//    if (choices.indexOf(playerChoice) !== -1){ //Validate user input against possible chocies
+//        return playerChoice;
+//       } else {
+//        playerChoice = prompt("Please try again. Enter only 'scissors', 'paper' or 'rock'."); //Error if player does not enter valid selection
+//        playerChoice = playerChoice.toLowerCase(); //Make input case-insensitive
+//        return playerChoice;
+//    }
+//}
+
 //Compare player selection with computer selection to determine win, loss or draw. 
 function getWinner(playerSelection, computerSelection) {
     //Check for draw
@@ -77,19 +101,18 @@ function playRound(){
     gameRounds();
     displayScore();
 }
-// Loop to play until one side (player vs computer) reaches 5 wins, and display final results 
-function game(){
-    while (playerScore < 5 || computerScore < 5) {
-        playRound();
-        if (playerScore === 5 || computerScore === 5) 
-        break;
-    } console.log('--- Game Over! Final Score Below ---');
-    if(playerScore > computerScore){
-        console.log("You win!");
-    } else if (computerScore > playerScore) {;
-        console.log("You lose!");
-    }
-    displayScore();
-}
-
-game();
+ //Loop to play until one side (player vs computer) reaches 5 wins, and display final results 
+ //function game(){
+ //  while (playerScore < 5 || computerScore < 5) {
+ //      playRound();
+ //      if (playerScore === 5 || computerScore === 5) 
+ //       break;
+ //   } console.log('--- Game Over! Final Score Below ---');
+ //   if(playerScore > computerScore){
+ //       console.log("You win!");
+ //   } else if (computerScore > playerScore) {;
+ //       console.log("You lose!");
+ //   }
+ //   displayScore();
+ //}
+ //game();
