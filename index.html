@@ -5,22 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
-    <style src="style.css"></style>
+    <link rel="stylesheet" href="./style.css"></style>
     <title>Scissors Paper Rock</title>
 </head>
 <body>
     <div id="title-container">
         <h1 class="title">Scissors Paper Rock</h1>
-        <h3 class="subtitle">Select your weapon...</h3>
+        <p class="subtitle">Select your weapon...</p>
     </div>
-    </div id="button-container">
-        <button class="scissors">Scissors</button>
-        <button class="paper">Paper</button>
-        <button class="rock">Rock</button>
+    <div id="button-container">
+        <button class="scissors"></button>
+        <button class="paper"></button>
+        <button class="rock"></button>
     </div>
-    <div class='selections'></div>
-    <div class='result'></div>
-    <div class='game-result'></div>
-    <h3 class='score-track'></h3>
+    <div class ='content'>
+        <div class='selections'></div>
+        <div class='result'></div>
+        <div class='score-track'></div>
+        <div class='game-result'></div>
+    </div>
+    <div class="button-container">
+        <button class="hidden-btn" id="restart">Play again?</button>
+    </div>
+<footer>
+    <div>Created by Sam Coleman, for </div>
+    <a href="https://www.theodinproject.com"> The Odin Project</a>
+</footer>
 </body>
 </html>

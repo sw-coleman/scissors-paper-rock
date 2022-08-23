@@ -26,7 +26,6 @@ function assignRock() {
     playerSelection = 'rock';
     playRound(playerSelection);
 }
-
 //Event listeners for buttons, to assign player selection upon click of button.
 const scissorsBtn = document.querySelector(".scissors");
 scissorsBtn.addEventListener("click", assignScissors);
@@ -36,6 +35,7 @@ paperBtn.addEventListener("click", assignPaper);
 
 const rockBtn = document.querySelector(".rock")
 rockBtn.addEventListener("click", assignRock);
+
 //Functions to disable buttons after game.
 function removeScissorsBtn(){
     scissorsBtn.removeEventListener("click", assignScissors);
@@ -76,28 +76,27 @@ function getWinner(playerSelection, computerSelection) {
 //Log the current score for player wins, computer wins and draws.
 function displayScore(){
     const scoreTrack = document.querySelector('.score-track');
-    scoreTrack.textContent = 
-        `Player: ${playerScore}\n
-        Computer: ${computerScore}\n
-        Draws: ${drawScore}\n
+    scoreTrack.textContent = `Score: 
+        Player - ${playerScore} // 
+        Computer - ${computerScore} // 
         Rounds Played: ${roundsPlayed}`;
 }
 
 //Display the player selection against the computer selection.
 function displaySelection(playerSelection, computerSelection){
     const selections = document.querySelector('.selections');
-    selections.textContent = `Player: ${playerSelection} Computer: ${computerSelection}`;
+    selections.textContent = `Player: ${playerSelection} // Computer: ${computerSelection}`;
 }
 
 //function to create first to five format.
 function firstToFive(){
     if (playerScore == 5){
         const gameResult = document.querySelector('.game-result');
-        gameResult.textContent = `You win! Final score: ${playerScore} - ${computerScore}.`
+        gameResult.textContent = `You win! Final score: ${playerScore} - ${computerScore}`
         restartGame();
     } else if (computerScore == 5){
         const gameResult = document.querySelector('.game-result');
-        gameResult.textContent = `You lose! Final score: ${computerScore} - ${playerScore}.`
+        gameResult.textContent = `You lose! Final score: ${playerScore} - ${computerScore}`
         restartGame();
     }
 }
@@ -117,13 +116,22 @@ function playRound(playerSelection){
     firstToFive();
 }
 
+//Function to reveal play again button
+function revealBtn(el){
+    el.classList.add('reveal');
+}
+
+//Function to add highlight class upon click of button
+function highlightBtn(el){
+    el.classList.add('highlight');
+}
+
+const restartBtn = document.querySelector('.hidden-btn');
+restartBtn.addEventListener('click', function(){
+    window.location.reload()});
+
 //Function to make button appear to restart game once best of 5.
 function restartGame(){
-    const restartBtn = document.createElement('button');
-    document.body.append(restartBtn);
-    restartBtn.textContent = 'Play again';
-    restartBtn.addEventListener('click', function(){
-        window.location.reload()});
     playerScore = 0;
     computerScore = 0;
     drawScore = 0;
@@ -131,20 +139,5 @@ function restartGame(){
     removeScissorsBtn();
     removePaperBtn();
     removeRockBtn();
+    revealBtn(restartBtn);
 }
-
- //Loop to play until one side (player vs computer) reaches 5 wins, and display final results 
- //function game(){
- //  while (playerScore < 5 || computerScore < 5) {
- //      playRound();
- //      if (playerScore === 5 || computerScore === 5) 
- //       break;
- //   } console.log('--- Game Over! Final Score Below ---');
- //   if(playerScore > computerScore){
- //       console.log("You win!");
- //   } else if (computerScore > playerScore) {;
- //       console.log("You lose!");
- //   }
- //   displayScore();
- //}
- //game();

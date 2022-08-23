@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+*{
+    font-family: Silkscreen;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#title-container{
+    text-align: center;
+}
+
+.title{
+    margin-bottom: 0;
+}
+
+.subtitle{
+    margin-top: 3px;
+}
+
+#button-container{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: 8px;
+    background-color: black;
+    color: white;
+    height: 2rem;
+}
+
+a{
+    color: white;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.result{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.game-result{
+    font-weight: bolder;
+    font-size: 26px;
+}
+
+.scissors{
+    background-image: url(./img/scissors.png);
+    height: 128px;
+    width: 128px;
+}
+
+.paper{
+    background-image: url(./img/paper.png);
+    height: 128px;
+    width: 128px;
+}
+
+.rock{
+    background-image: url(./img/rock.png);
+    height: 128px;
+    width: 128px;
+}
+
+.hidden-btn{
+    display: none;
+}
+
+.reveal{
+    display:block;
+    align-items: center;
+}
+
+#restart{
+    width: 200px;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+}
